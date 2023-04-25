@@ -23,7 +23,7 @@ A threshold function, usually Heaviside or sign functions, maps the scalar value
 Indeed if the neuron output is exactly zero it cannot be assumed that the sample belongs to the first sample since it lies on the boundary between the two classes. Nonetheless for the sake of simplicity,ignore this situation.
 
 
-## ALGORITHM:
+ALGORITHM:
 Importing the libraries
 Importing the dataset
 Plot the data to verify the linear separable dataset and consider only two classes
@@ -42,9 +42,14 @@ Plot the error for each iteration
 Print the accuracy
 
 
- ## PROGRAM:
- ```
- import numpy as np
+## PROGRAM:
+~~~
+Developed By: DHIVYA SHRI B
+Reg No.: 212221230009
+~~~
+
+~~~
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
@@ -52,28 +57,28 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 class Perceptron:
-  def __init__(self, learning_rate=0.1):
-    self.learning_rate = learning_rate
-    self._b = 0.0  # y-intercept
-    self._w = None  # weights assigned to input features
-    self.misclassified_samples = []
-  def fit(self, x: np.array, y: np.array, n_iter=10):
-    self._b = 0.0
-    self._w = np.zeros(x.shape[1])
-    self.misclassified_samples = []
-    for _ in range(n_iter):
-      # counter of the errors during this training iteration
-      errors = 0
-      for xi, yi in zip(x, y):
-        update = self.learning_rate * (yi - self.predict(xi))
-        self._b += update
-        self._w += update * xi
-        errors += int(update != 0.0)
-      self.misclassified_samples.append(errors)
-  def f(self, x: np.array) -> float:
-    return np.dot(x, self._w) + self._b
-  def predict(self, x: np.array):
-    return np.where(self.f(x) >= 0, 1, -1)
+ def __init__(self, learning_rate=0.1):
+   self.learning_rate = learning_rate
+   self._b = 0.0  # y-intercept
+   self._w = None  # weights assigned to input features
+   self.misclassified_samples = []
+ def fit(self, x: np.array, y: np.array, n_iter=10):
+   self._b = 0.0
+   self._w = np.zeros(x.shape[1])
+   self.misclassified_samples = []
+   for _ in range(n_iter):
+     # counter of the errors during this training iteration
+     errors = 0
+     for xi, yi in zip(x, y):
+       update = self.learning_rate * (yi - self.predict(xi))
+       self._b += update
+       self._w += update * xi
+       errors += int(update != 0.0)
+     self.misclassified_samples.append(errors)
+ def f(self, x: np.array) -> float:
+   return np.dot(x, self._w) + self._b
+ def predict(self, x: np.array):
+   return np.where(self.f(x) >= 0, 1, -1)
 df = pd.read_csv('/content/IRIS.csv')
 df.head()
 # extract the label column
@@ -87,7 +92,7 @@ y = y[0:100]
 plt.scatter(x[:50, 0], x[:50, 1], color='red', marker='o', label='Setosa')
 # plot Iris Versicolour samples
 plt.scatter(x[50:100, 0], x[50:100, 1], color='blue', marker='x',
-            label='Versicolour')
+           label='Versicolour')
 # show the legend
 plt.xlabel("Sepal length")
 plt.ylabel("Petal length")
@@ -113,12 +118,12 @@ plt.plot(range(1, len(classifier.misclassified_samples) + 1),classifier.misclass
 plt.xlabel('Epoch')
 plt.ylabel('Errors')
 plt.show()
- ```
-## OUTPUT
+~~~
 
-![1](https://user-images.githubusercontent.com/114641798/197109403-23a12727-f253-4498-9986-e101f3c665c3.jpg)
+## Output:
+![image](https://user-images.githubusercontent.com/94827772/230738762-7e00faf2-359f-49fc-acd5-d59dd0d35617.png)
+![image](https://user-images.githubusercontent.com/94827772/230738768-72d7b055-d8fe-4fce-af36-3cb49ceb78cc.png)
 
-![2](https://user-images.githubusercontent.com/114641798/197109449-ac2f335e-acc4-4437-ae15-942169a2c252.jpg)
+## Result:
+Thus ,a perceptron for classification using Python is executed successfully.
 
-## Result
-Thus,a perceptron for classification using Python is executed successfully.
