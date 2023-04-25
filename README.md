@@ -44,8 +44,8 @@ Print the accuracy
 
 ## PROGRAM:
 ~~~
-Developed By: DHIVYA SHRI B
-Reg No.: 212221230009
+Developed By: PRAMODH.R
+Reg No.: 212221040128
 ~~~
 
 ~~~
